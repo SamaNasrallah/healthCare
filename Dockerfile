@@ -25,8 +25,8 @@ WORKDIR /var/www/html
 COPY . .
 
 # تثبيت الحزم المطلوبة (Composer و npm)
-RUN composer install 
-RUN npm install  && npm run build
+RUN composer install --no-dev --optimize-autoloader
+RUN npm install --production && npm run build
 RUN composer require jenssegers/laravel-mongodb
 
 # إعداد Laravel (إعداد التخزين والمفاتيح)
